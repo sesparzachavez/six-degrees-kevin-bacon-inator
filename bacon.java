@@ -35,9 +35,9 @@ public class bacon {
 			back = 0;
 		}
 
-		public T dequeue() {
+		public T dequeue() throws Exception{
 			if (empty()){
-				throw new NoSuchElementException();
+				throw new Exception();
 			}
 			T new_arr = (T) arr[front];
 			//return (T) arr[(front++)%arr.length];//this is nottttt working 
@@ -156,7 +156,11 @@ public class bacon {
 		visited.put(curr, true);
 
 		while (!queue.empty()) {
-
+			try{
+				curr = queue.dequeue();
+			}catch (Exception e){
+				e.printStackTrace();
+			}
 			curr = queue.dequeue();
 			
 			if (!curr.equals(b)) {
